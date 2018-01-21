@@ -1,0 +1,33 @@
+{
+  "name": "ithub-nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zyyn55/ithub-nodejs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zyyn55/ithub-nodejs/issues"
+  },
+  "homepage": "https://github.com/zyyn55/ithub-nodejs#readme",
+  "dependencies": {
+    "art-template": "^4.12.2",
+    "body-parser": "^1.18.2",
+    "bootstrap": "^3.3.7",
+    "express": "^4.16.2",
+    "express-art-template": "^1.0.0",
+    "express-session": "^1.15.6",
+    "jquery": "^3.2.1",
+    "marked": "^0.3.12",
+    "md5": "^2.2.1",
+    "moment": "^2.20.1",
+    "mysql": "^2.15.0"
+  }
+}

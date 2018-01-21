@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+  {{include '../_includes/header.html'}}
+  <section class="container">
+  <div class="row">
+    <div class="col-md-5">
+      <form id="create_form">
+        <div class="form-group">
+          <label for="exampleInputEmail1">选择板块</label>
+          <select class="form-control" name="categoryId" required>
+           {{ each topicCategories }}
+           <option value="{{ $value.id }}">{{ $value.name }}</option>
+            {{ /each }}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="title">标题</label>
+          <input type="title" class="form-control" id="title" name="title" placeholder="title">
+        </div>
+        <div class="form-group">
+          <label for="content">内容</label>
+          <textarea class="form-control" id="content" name="content" rows="10"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
+  {{include '../_includes/footer.html'}}
+  <script src="/node_modules/jquery/dist/jquery.js"></script>
+  <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+  <script>
+    $('#create_form').on('submit',handleCreate)
+    function handleCreate(e){
+      e.preventDefault()
+      var formData = $(this).serialize()
+      // console.log(formData)
+      $.ajax({
+        url:'/topic/create',
+        type:'post',
+        data:formData,
+        dataType:'json',
+        success:function(data){
+          // console.log(data)
+          var code = data.code
+          switch(code){
+             case 0:
+             window.location.href=data.redirect
+             break
+          }
+        },
+        error:function(err){
+          console.log(err)
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>
